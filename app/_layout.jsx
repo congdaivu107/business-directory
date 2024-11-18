@@ -5,10 +5,12 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
+import LoginScreen from './../components/LoginScreen';
+import { ClerkProvider, ClerkLoaded, SignedIn, SignedOut } from '@clerk/clerk-expo';
+
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -16,6 +18,12 @@ export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
+
+  useFonts({
+    'outfit':require('./../assets/fonts/Outfit-Regular.ttf'),
+    'outfit-medium':require('./../assets/fonts/Outfit-Medium.ttf'),
+    'outfit-bold':require('./../assets/fonts/Outfit-Bold.ttf'),
+  })
 
   useEffect(() => {
     if (loaded) {
@@ -29,11 +37,17 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+    <ClerkProvider publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}>
+      <SignedIn>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)"  />
       </Stack>
-      <StatusBar style="auto" />
+      </SignedIn>
+      <SignedOut>
+        <LoginScreen/>
+      </SignedOut>
+      </ClerkProvider>
     </ThemeProvider>
+    
   );
 }
