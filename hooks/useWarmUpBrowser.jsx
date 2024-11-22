@@ -1,13 +1,11 @@
 import React from "react";
-import { Redirect, Stack } from 'expo-router'
-import { useAuth } from '@clerk/clerk-expo'
+import * as WebBrowser from 'expo-web-browser';
 
-export default function AuthRoutesLayout() {
-  const { isSignedIn } = useAuth()
-
-  if (isSignedIn) {
-    return <Redirect href={'/'} />
-  }
-
-  return <Stack />
-} 
+export const useWarmUpBrowser = () => {
+  React.useEffect(() => {
+    void WebBrowser.warmUpAsync()
+    return () => {
+      void WebBrowser.coolDownAsync()
+    }
+  }, []);
+};
