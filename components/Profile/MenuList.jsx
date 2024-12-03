@@ -16,7 +16,7 @@ export default function MenuList() {
             id:2,
             name:'My Business',
             icon:require('../../assets/images/office-building.png'),
-            path:''
+            path:'business/my-business'
         },
         {
             id:3,
