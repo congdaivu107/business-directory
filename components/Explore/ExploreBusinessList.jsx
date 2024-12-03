@@ -1,10 +1,10 @@
 import { View, Text, FlatList, ScrollView } from 'react-native'
 import React from 'react'
-import BusinessListCard from './BusinessListCard';
+import BusinessListCard from '../Explore/BusinessListCard'
 
 export default function ExploreBusinessList({businessList}) {
   return (
-    <ScrollView>
+    <View>
         <FlatList 
         data={businessList}
         scrollEnabled
@@ -21,6 +21,6 @@ export default function ExploreBusinessList({businessList}) {
         }}>
 
         </View>
-    </ScrollView>
+    </View>
   )
 }

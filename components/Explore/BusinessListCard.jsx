@@ -5,10 +5,10 @@ import { useRouter } from 'expo-router'
 
 
 export default function BusinessListCard({business}) {
-    const router = useRouter
+    const router = useRouter();
   return (
     <TouchableOpacity 
-    onPress={()=> router.push('businessdetail/'+business?.id)}
+    onPress={()=> router.push('/businessdetail/'+business?.id)}
     style={{
         backgroundColor:'#fff',
         borderBottomLeftRadius:15,

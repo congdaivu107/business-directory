@@ -26,7 +26,7 @@ export default function Category({explore=false,onCategorySelect}) {
     }
     const onCategoryPressHandler=(item)=>{
       if(!explore){
-        router.push('/businesslist' + category)
+        router.push('/businesslist/' + item.name)
       }
       else{
         onCategorySelect(item.name)
@@ -55,7 +55,7 @@ export default function Category({explore=false,onCategorySelect}) {
             <CategoryItem 
             category={item} 
             key={index}
-            onCategoryPress={(category)=>
+            onCategoryPress={(item)=>
               onCategoryPressHandler(item)
             }
             />

@@ -17,21 +17,21 @@ export default function BusinessDetail() {
     useEffect(()=>{
         GetBusinessDetailById();
     },[])
+
     const GetBusinessDetailById=async()=>{
         setLoading(true);
         const docRef = doc(db,'BusinessList',businessid)
         const docSnap = await getDoc(docRef);
-        if( DocumentSnapshot.exists()){
-            console.log("Document data:", docSnap.data());
+        if( docSnap.exists()){
             setBusiness({id:docSnap.id,...docSnap.data()});
             setLoading(false);
         }else{
-            console.log("No much document");
+            console.log("No such document");
             setLoading(false);
         }
     }
   return (
-    <ScrollView>
+    <View>
         {loading?
         <ActivityIndicator 
         style={{
@@ -51,6 +51,6 @@ export default function BusinessDetail() {
             <Review business={business}/>
         </View>    
     }
-    </ScrollView>
+    </View>
   )
 }

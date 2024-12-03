@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, ToastAndroid, FlatList, Image } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, ToastAndroid, Image } from 'react-native'
 import React, { useState } from 'react'
 import { Rating } from 'react-native-ratings'
 import { Colors } from '../../constants/Colors';

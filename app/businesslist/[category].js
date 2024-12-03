@@ -12,6 +12,7 @@ export default function BusinessListByCategory() {
     const {category} = useLocalSearchParams();
     const [businessList, setBusinessList] = useState([]);
     const [loading,setLoading]=useState(false);
+     
     useEffect(() =>{
         navigation.setOptions({
             headerShown:true,

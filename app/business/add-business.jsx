@@ -12,18 +12,18 @@ import { useUser } from '@clerk/clerk-expo';
 export default function AddBusiness() {
     const [image,setImage ] = useState(null);
     const [categoryList, setCategoryList] = useState([]);
-    const [user] = useUser();
+    const {user} = useUser();
     const [name,setName] = useState();
     const [address,setAddress] = useState();
     const [contact,setContact] = useState();
     const [website,setWebsite] = useState();
     const [about,setAbout] = useState();
     const [category,setCategory] = useState();
-    const [loading,setLoading] = setLoading(false);
+    const [loading,setLoading] = useState(false);
 
     const onImagePick=async()=>{
         let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            mediaTypes: ['images', 'videos'],
             allowsEditing: true,
             quality: 1,
           });
@@ -35,9 +35,9 @@ export default function AddBusiness() {
         navigation.setOptions({
             headerTitle:'Add New Business',
             headerShown:true,
-        })
+        });
         GetCategoryList();
-    })
+    },[]);
     const GetCategoryList = async() => {
         setCategoryList([]);
         const q=query(collection(db,'Category'));
@@ -72,7 +72,7 @@ export default function AddBusiness() {
     }
     
     const saveBusinessDetail=async(imageUrl)=>{
-        await setDoc(doc(db,'BusinessList', Date.now().toString()),{
+        await setDoc(doc(db,'BusinessDetail', Date.now().toString()),{
             name:name,
             address:address,
             contact:contact,
@@ -217,7 +217,7 @@ export default function AddBusiness() {
         {loading? 
         <ActivityIndicator size={'large'} color={'#fff'}/>:
         <Text style={{
-            textAlign:20,
+            textAlign:'center',
             fontFamily:'outfit-medium',
             color:"#fff"
         }}>Add New Business</Text>}

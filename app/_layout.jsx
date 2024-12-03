@@ -6,7 +6,7 @@ import 'react-native-reanimated';
 import * as SecureStore from 'expo-secure-store';
 
 import LoginScreen from './../components/LoginScreen';
-import { ClerkProvider, ClerkLoaded, SignedIn, SignedOut } from '@clerk/clerk-expo';
+import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-expo';
 
 
 SplashScreen.preventAutoHideAsync();

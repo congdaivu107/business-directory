@@ -3,7 +3,6 @@ import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Entypo from '@expo/vector-icons/Entypo';
 import { useRouter } from 'expo-router';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { deleteDoc } from 'firebase/firestore';
 import { db } from '../../config/FirebaseConfig';
 import { useUser } from '@clerk/clerk-expo';

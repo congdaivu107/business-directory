@@ -1,7 +1,7 @@
 import { View, Text, FlatList, Image, TouchableOpacity, Linking } from 'react-native'
 import React from 'react'
 
-export default function ActionButton(business) {
+export default function ActionButton({business}) {
     const actionButtonMenu=[
         {
             id:1,

@@ -5,7 +5,7 @@ import {Colors} from '../../constants/Colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function Header() {
-  const {user} =useUser;
+  const {user} = useUser();
   return (
     <View style={{
       padding:20,
