@@ -29,7 +29,10 @@ export default function ActionButton(business) {
         },
     ]
     const OnPressHandle =(item)=>{
-        if(item.name =='share'){
+        if(item.name =='Share'){
+            Share.share({
+                message:business?.name+"\n Address:" + business.address+"\n Find more details on Business Directory App by Dai and Duong !"
+            })
             return ;
         }
         Linking.openURL(item.url)
